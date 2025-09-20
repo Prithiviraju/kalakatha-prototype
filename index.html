@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KalaKatha - AI-Powered Storytelling for Artisans</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <h1>🎨 KalaKatha</h1>
+                    <span class="tagline">Art Story</span>
+                </div>
+                <nav class="nav-menu">
+                    <button class="nav-btn active" data-section="home">Home</button>
+                    <button class="nav-btn" data-section="generator">AI Story Generator</button>
+                    <button class="nav-btn" data-section="avatar">AI Avatar</button>
+                    <button class="nav-btn" data-section="portfolio">Portfolio</button>
+                    <button class="nav-btn" data-section="analytics">Analytics</button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="home" class="section active">
+            <div class="hero-section">
+                <div class="container">
+                    <div class="hero-content">
+                        <div class="hero-text">
+                            <h1 class="hero-title">Transform Your Craft Into Captivating Stories</h1>
+                            <p class="hero-subtitle">KalaKatha empowers artisans with AI-driven storytelling, turning traditional crafts into engaging digital narratives that honor heritage and drive sales.</p>
+                            <div class="hero-actions">
+                                <button class="btn-primary" onclick="switchSection('generator')">Start Creating Stories</button>
+                                <button class="btn-secondary">Watch Demo</button>
+                            </div>
+                        </div>
+                        <div class="hero-image">
+                            <div class="craft-showcase">
+                                <div class="craft-item">🎨</div>
+                                <div class="craft-item">🏺</div>
+                                <div class="craft-item">🧵</div>
+                                <div class="craft-item">🪔</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="container">
+                    <h2>Empowering Artisans Across India</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">5,000+</div>
+                            <div class="stat-label">Artisans Helped</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">25,000+</div>
+                            <div class="stat-label">Stories Generated</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Languages Supported</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">150%</div>
+                            <div class="stat-label">Sales Increase</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <div class="container">
+                    <h2>Our Core Features</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🤖</div>
+                            <h3>Heritage Voice AI</h3>
+                            <p>Generate culturally-rich stories using AI trained on Indian mythology and traditions</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">👥</div>
+                            <h3>AI Artisan Avatar</h3>
+                            <p>24/7 customer support through intelligent avatars that know your craft history</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🌐</div>
+                            <h3>Multilingual Support</h3>
+                            <p>Create content in 12+ Indian languages with cultural adaptation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="generator" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Heritage Voice AI Story Generator</h2>
+                    <p>Transform your craft into compelling stories that honor tradition and drive sales</p>
+                </div>
+
+                <div class="generator-content">
+                    <div class="upload-section">
+                        <div class="upload-area" id="imageUpload">
+                            <div class="upload-placeholder">
+                                <div class="upload-icon">📷</div>
+                                <p>Click to upload craft image</p>
+                                <small>Support JPG, PNG up to 5MB</small>
+                            </div>
+                            <input type="file" id="fileInput" accept="image/*" hidden>
+                        </div>
+                    </div>
+
+                    <div class="description-section">
+                        <textarea id="craftDescription" placeholder="Describe your craft in your native language...
+Example: मेरी यह मधुबनी पेंटिंग मिथिला की पारंपरिक कला है। इसमें मछली और मोर के चित्र हैं जो शुभता का प्रतीक हैं।"></textarea>
+                        
+                        <div class="language-selector">
+                            <label>Select Language:</label>
+                            <select id="languageSelect">
+                                <option value="en">English</option>
+                                <option value="hi">Hindi</option>
+                                <option value="ta">Tamil</option>
+                                <option value="te">Telugu</option>
+                                <option value="bn">Bengali</option>
+                                <option value="gu">Gujarati</option>
+                                <option value="mr">Marathi</option>
+                                <option value="kn">Kannada</option>
+                            </select>
+                        </div>
+
+                        <button class="btn-primary" id="generateStory" onclick="generateAIStory()">
+                            Generate Heritage Story
+                        </button>
+                    </div>
+
+                    <div class="results-section" id="storyResults" style="display: none;">
+                        <div class="story-card">
+                            <h3>Product Description</h3>
+                            <div id="productDescription" class="story-content"></div>
+                        </div>
+                        
+                        <div class="story-card">
+                            <h3>Social Media Post</h3>
+                            <div id="socialMediaPost" class="story-content"></div>
+                        </div>
+                        
+                        <div class="story-card">
+                            <h3>Cultural Heritage Story</h3>
+                            <div id="culturalStory" class="story-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="avatar" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>AI Artisan Avatar</h2>
+                    <p>Interactive customer service powered by cultural knowledge</p>
+                </div>
+
+                <div class="avatar-content">
+                    <div class="avatar-display">
+                        <div class="avatar-container">
+                            <div class="avatar-image">
+                                <div class="avatar-face">👩‍🎨</div>
+                                <div class="avatar-name">Kamala</div>
+                                <div class="avatar-title">Heritage Craft Expert</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-section">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message avatar-message">
+                                <div class="message-content">
+                                    Namaste! I am Kamala, your AI guide to the beautiful world of traditional Indian crafts. How can I help you learn about our heritage today?
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="chat-input">
+                            <input type="text" id="userQuestion" placeholder="Ask about craft history, techniques, or cultural significance...">
+                            <button onclick="askAvatar()">Send</button>
+                        </div>
+
+                        <div class="quick-questions">
+                            <button class="quick-btn" onclick="askQuickQuestion('What is Madhubani art?')">What is Madhubani art?</button>
+                            <button class="quick-btn" onclick="askQuickQuestion('How is Kanjeevaram silk made?')">How is Kanjeevaram silk made?</button>
+                            <button class="quick-btn" onclick="askQuickQuestion('What materials are used in pottery?')">What materials are used?</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Craft Portfolio</h2>
+                    <p>Your enhanced stories and their marketplace impact</p>
+                </div>
+
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🎨</div>
+                        <div class="portfolio-content">
+                            <h3>Madhubani Painting</h3>
+                            <p class="portfolio-description">Born from the walls of Mithila, this ancient art form carries the blessings of Goddess Lakshmi...</p>
+                            <div class="portfolio-stats">
+                                <span class="stat">👁️ 1.2K views</span>
+                                <span class="stat">❤️ 89 likes</span>
+                                <span class="stat">🔄 34 shares</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🏺</div>
+                        <div class="portfolio-content">
+                            <h3>Blue Pottery</h3>
+                            <p class="portfolio-description">From the royal kitchens of Jaipur emerges pottery as blue as the eternal sky...</p>
+                            <div class="portfolio-stats">
+                                <span class="stat">👁️ 856 views</span>
+                                <span class="stat">❤️ 67 likes</span>
+                                <span class="stat">🔄 23 shares</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="portfolio-item">
+                        <div class="portfolio-image">🧵</div>
+                        <div class="portfolio-content">
+                            <h3>Kanjeevaram Saree</h3>
+                            <p class="portfolio-description">Woven by the descendants of Sage Markanda, each saree carries threads of gold...</p>
+                            <div class="portfolio-stats">
+                                <span class="stat">👁️ 2.1K views</span>
+                                <span class="stat">❤️ 156 likes</span>
+                                <span class="stat">🔄 78 shares</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="analytics" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Analytics Dashboard</h2>
+                    <p>Track your story performance and marketplace impact</p>
+                </div>
+
+                <div class="analytics-grid">
+                    <div class="analytics-card">
+                        <h3>Story Performance</h3>
+                        <div class="metric">
+                            <div class="metric-value">156</div>
+                            <div class="metric-label">Stories Generated</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">89%</div>
+                            <div class="metric-label">Engagement Rate</div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Revenue Impact</h3>
+                        <div class="metric">
+                            <div class="metric-value">₹45,670</div>
+                            <div class="metric-label">Monthly Revenue</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">+127%</div>
+                            <div class="metric-label">Growth Rate</div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Global Reach</h3>
+                        <div class="metric">
+                            <div class="metric-value">23</div>
+                            <div class="metric-label">Countries Reached</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">8</div>
+                            <div class="metric-label">Languages Used</div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-card">
+                        <h3>Customer Engagement</h3>
+                        <div class="metric">
+                            <div class="metric-value">234</div>
+                            <div class="metric-label">Avatar Interactions</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">4.8/5</div>
+                            <div class="metric-label">Satisfaction Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
